@@ -3,7 +3,7 @@
 {% block content %}
     <form name = "form" enctype = "multipart/form-data" 
          action = "{% url "image:upload_image" %}" method = "POST" >{% csrf_token %}
-         <div style = "max-width:470px;">
+         <div style = "max-width:470px;align:center">
             <center> 
                <input type = "file" style = "margin-left:20%;" class="btn btn-primary"
                   placeholder = "Picture" name = "file" />
