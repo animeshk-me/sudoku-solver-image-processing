@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form name = "form" enctype = "multipart/form-data" 
+         action = "{% url "image:upload_image" %}" method = "POST" >{% csrf_token %}
+         
+         
+         <div style = "max-width:470px;">
+            <center> 
+               <input type = "file" style = "margin-left:20%;" class="btn btn-primary"
+                  placeholder = "Picture" name = "file" />
+            </center>
+         </div>
+			
+         <br>
+         
+         <div style = "max-width:470px;">
+            <center> 
+            
+               <button style = "border:0px;background-color:#4285F4; margin-top:8%; 
+                  height:35px; width:80%; margin-left:19%;" type = "submit" value = "Upload" >
+                  <strong>Upload</strong>
+               </button>
+               
+            </center>
+         </div>
+         
+      </form>
+
+{% endblock content %}

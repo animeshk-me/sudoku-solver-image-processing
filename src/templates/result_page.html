@@ -1,0 +1,21 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% block content %}
+{% comment %}
+<h2>File Uploaded Successfully</h2>
+{% endcomment %}
+<a class="btn btn-primary" href="{% url 'image:upload_image' %}">Home</a>
+{% if valid %}
+    <br/>
+    <img src ="{% static 'input.jpg' %}" class='img-fluid' height = 10px>
+    <br/>
+    <a class="btn btn-primary" href = "#Top" >Scroll to Top</a>
+    <script>
+    alert("Successfully Uploaded!!");
+    </script>
+{% else %}
+    <script>
+    alert("Invalid File Upload!!");
+    </script>
+{% endif %}
+{% endblock content %}
