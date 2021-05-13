@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+   {% if valid %}
+      <form method = "post" action = "{% url "image:process_select" %}">{% csrf_token %}
+         <select id="org" name="selected_option" onChange="redirectUrl()">
+            <option  value="" selected="selected">--Nothing Selected--</option>
+            {% for obj in options %}
+            <option value="{{obj.id}}">{{obj.name}}</option>
+            {% endfor %}
+         </select>
+            
+         <button class='btn btn-danger' type = "submit" value = "Submit" >
+            <strong>Process Image</strong>
+         </button>
+      </form> 
+      <script>
+      alert("Successfully Uploaded!!");
+      </script>
+               
+   {% else %}
+      <script>
+      alert("Invalid File Upload!!");
+      </script>
+   {% endif %}
+   {% comment %} <form name = "form" enctype = "multipart/form-data" 
+      action = "{% url "image:upload_image" %}" method = "POST" >{% csrf_token %}
+      
+      
+      <div style = "max-width:470px;">
+         <center> 
+            <input type = "file" style = "margin-left:20%;" class="btn btn-primary"
+               placeholder = "Picture" name = "file" />
+         </center>
+      </div>
+      
+      <br>
+      
+      <div style = "max-width:470px;">
+         <center> 
+         
+            <button style = "border:0px;background-color:#4285F4; margin-top:8%; 
+               height:35px; width:80%; margin-left:19%;" type = "submit" value = "Upload" >
+               <strong>Upload</strong>
+            </button>
+            
+         </center>
+      </div>
+      
+   </form> {% endcomment %}
+
+{% endblock content %}
