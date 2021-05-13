@@ -30,6 +30,7 @@ def upload_image_view(request):
         options = []
         options.append(Option('Convert to Binary(binarize)', 1))
         options.append(Option('Invert', 2))
+        options.append(Option('Histogram Equalisation', 3))
         context = {
             "options": options,
             "message": message,
@@ -45,6 +46,10 @@ def upload_image_view(request):
 def process_select_view(request):
     if request.method == "POST":
         selected_option = request.POST['selected_option']
-        print(selected_option, type(selected_option))
+        print("selected_option", selected_option)
+        if(image_processor(selected_option)):
+            return render(request, 'result_page.html', {})
+        else:
+            return render(request, 'raise_exception_page.html', {'error':'Internal Server Error'})
     else:
-        print("loda")
+        return render(request, 'raise_exception_page.html', {'error':'Bad Request'})
