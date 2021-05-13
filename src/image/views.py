@@ -1,12 +1,9 @@
-from os import name
 from django.shortcuts import render
 from .forms import UploadImageForm
 # Create your views here.
 
-from .utils import *
-
-# def home_view(request):
-#     return render(request, 'home_page.html', {})
+from image.utils import *
+from image.utils_tk import *
 
 class Option:
     def __init__(self, name, id):
@@ -28,9 +25,10 @@ def upload_image_view(request):
         else:
             message = 'Invalid File Upload!!'
         options = []
-        options.append(Option('Convert to Binary(binarize)', 1))
-        options.append(Option('Invert', 2))
+        options.append(Option('Thresholding', 1))
+        options.append(Option('Night Mode', 2))
         options.append(Option('Histogram Equalisation', 3))
+        options.append(Option('Sudoku Solver', 4))
         context = {
             "options": options,
             "message": message,
